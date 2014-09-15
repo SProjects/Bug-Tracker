@@ -20,7 +20,7 @@ if (isset($_POST['submitBug'])) {
     if($title == '' || $description == '') {
         echo '<div class="ui error message" style="margin-top: 5%"><div class="header">ERROR</div> Title and/or description field(s) missing input.</div>';
     }else{
-        $bug = new Bug($title, $description, $user, 1);
+        $bug = new Bug($title, $description, $user, new Status(null, "OPEN", 1));
         $bug_access_object->insertNewBug($bug);
         echo '<div class="ui success message" style="margin-top: 5%"><div class="header">SUCCESS</div> Bug has been stored.</div>';
     }

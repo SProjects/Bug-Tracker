@@ -4,6 +4,7 @@ include_once "./models/user.php";
 include_once "./models/Bug.php";
 include_once "Dao.php";
 include_once "UserDao.php";
+include_once "StatusDao.php";
 
 class BugDao extends Dao{
 
@@ -50,7 +51,7 @@ class BugDao extends Dao{
     private function make_bug_object_from_array($results){
         $bug_array = array();
         while($row = mysql_fetch_array($results)){
-            $bug_object = new Bug($row['title'], $row['description'], $this->getUserObject($row['user_id']), $row['status'], $row['id']);
+            $bug_object = new Bug($row['title'], $row['description'], $this->getUserObject($row['user_id']), $this->getStatusObject($row['status']), $row['id']);
             array_push($bug_array, $bug_object);
         }
         return $bug_array;
@@ -59,6 +60,11 @@ class BugDao extends Dao{
     private function getUserObject($user_id){
         $user_dao = new UserDao();
         return $user_dao->get_where("id = $user_id")[0];
+    }
+
+    private function getStatusObject($status_id){
+        $status_dao = new StatusDao();
+        return $status_dao->get_where("number = $status_id")[0];
     }
 
     private function execute_query($sql, $return_object = FALSE){
