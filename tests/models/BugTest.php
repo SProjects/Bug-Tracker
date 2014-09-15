@@ -32,6 +32,16 @@ class BugTest extends PHPUnit_Framework_TestCase{
         $this->assertNotEquals("Bug descriptions", $this->bug->getDescription());
     }
 
+    public function testReturnsCorrectUser(){
+        $new_bug =  new Bug("Bug title", "Bug description", new User("username", "password", null, null), new Status(null, "OPEN", 1), null);
+        $this->assertEquals(TRUE, $this->bug->getUser()->equals($new_bug->getUser()));
+    }
+
+    public function testReturnsIncorrectUser(){
+       $new_bug =  new Bug("Bug title", "Bug description", new User("username1", "password1", null, null), new Status(null, "OPEN", 1), null);
+       $this->assertNotEquals(TRUE, $this->bug->getUser()->equals($new_bug->getUser()));
+    }
+
     public function testTwoBugsAreEqual(){
         $newBug = new Bug("Bug title", "Bug description", new User("username", "password", null, null), new Status(null, "OPEN", 1), null);
         $this->assertEquals(TRUE, $newBug->equals($this->bug));
