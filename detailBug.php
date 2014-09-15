@@ -34,7 +34,7 @@ if (isset($_POST['editBug'])) {
        $user_id = $bug->getUser()->getId();
 
     $user_update = $user_access_object->getUserById($user_id);
-    $updated_bug = new Bug($title, $description, $user_update, $status, $bug->getId());
+    $updated_bug = new Bug($title, $description, $user_update, $status_access_object->getStatusWhere(array('number' => $status))[0], $bug->getId());
 
     if($updated_bug->equals($bug)){
         echo '<div class="ui visible message blue" style="margin-top: 5%"><div class="header">NOTICE</div> No edits detected.</div>';
