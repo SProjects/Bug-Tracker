@@ -1,0 +1,17 @@
+{
+    "name": "daniel/bug-tracker",
+    "description": "Bug Tracker application which allows users of an application to submit bugs",
+    "require": {
+        "phpunit/phpunit": "4.2.*",
+        "phpunit/php-invoker": "*",
+        "phpunit/dbunit": ">=1.2",
+        "phpunit/phpunit-selenium": ">=1.2"
+    },
+    "authors": [
+        {
+            "name": "Sebuuma Daniel",
+            "email": "sedzsoft@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
