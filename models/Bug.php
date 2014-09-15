@@ -1,5 +1,4 @@
 <?php
-include_once './services/StatusServices.php';
 
 class Bug {
 
@@ -9,7 +8,7 @@ class Bug {
     private $status;
     private $user;
 
-    public function __construct($title, $description, User $user, $status, $id = NULL){
+    public function __construct($title, $description, User $user, Status $status, $id = NULL){
         $this->id = $id;
         $this->title = $title;
         $this->description = $description;
@@ -34,8 +33,7 @@ class Bug {
     }
 
     public function getStatus(){
-        $status_access_object = new StatusServices();
-        return $status_access_object->getStatusWhere(array('number' => $this->status))[0];;
+        return $this->status;
     }
 
     public function equals(Bug $bug){
