@@ -12,7 +12,7 @@ class BugTest extends PHPUnit_Framework_TestCase{
     }
 
     public function tearDown(){
-
+        unset($this->bug);
     }
 
     public function testReturnsCorrectTitle(){
