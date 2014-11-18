@@ -2,3 +2,6 @@
 playground
 vendor
 composer.lock
+dao/connection/geodb.php
+dao/connection/openrbf.php
+dao/connection/burkina.php
